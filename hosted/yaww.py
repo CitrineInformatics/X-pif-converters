@@ -14,7 +14,7 @@ def unpack_arguments(argv_in):
 
 args = unpack_arguments(argv)
 
-from sparks_pif_converters.XRD import raw4_txt_to_pif
+from sparks_pif_converters.XRD import raw_to_pif
 from pypif import pif
 for fname in args['files']:
     pifs = raw4_txt_to_pif(fname)
