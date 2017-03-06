@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # Just a pass through
-./yaww.py $*
+./hosted/yaww.py $*
