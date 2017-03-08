@@ -54,7 +54,7 @@ def raw4_txt_to_pif(closed_txt):
     return [my_pif]
 
 
-def raw_to_pif(raw_xrd_file):
+def raw_to_pif(raw_xrd_file, tags=None):
 
     # parses .raw file
     try:
@@ -85,6 +85,8 @@ def raw_to_pif(raw_xrd_file):
 
         my_pif.properties.append(peaks)
         my_pif.properties.append(I_max)
+        if tags is not None:
+            my_pif.tags = tags
 
         return my_pif
 
