@@ -1,12 +1,16 @@
 DOCKER = docker
 
 run: image
-	docker run ingest-test
+	docker run sparks-xrd
 
 debug: image
-	docker run -it --entrypoint /bin/bash ingest-test
+	docker run -it --entrypoint /bin/bash sparks-xrd
 
-image: Dockerfile $(HOME)/src/dice-wrapper/Dockerfile hosted/yaww.py exec.sh $(HOME)/src/dice-wrapper/wrap.rb
-	$(DOCKER) build -t ingest-test .
+image: Dockerfile hosted/yaww.py exec.sh
+	$(DOCKER) build -t sparks-xrd .
 	touch image
 
+push: image
+	`aws ecr get-login --region us-west-2`
+	docker tag sparks-xrd:latest 010850123561.dkr.ecr.us-west-2.amazonaws.com/sparks-xrd:latest
+	docker push 010850123561.dkr.ecr.us-west-2.amazonaws.com/sparks-xrd:latest
