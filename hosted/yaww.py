@@ -17,9 +17,9 @@ args = unpack_arguments(argv)
 from sparks_pif_converters.XRD import raw_to_pif
 from pypif import pif
 for fname in args['files']:
-    pifs = raw4_txt_to_pif(fname)
+    pifs = raw_to_pif(fname)
     with open("output.json", "w") as f:
-        pif.dump(pifs)
+        pif.dump(pifs, f)
 
 out_files = ["output.json"]
 

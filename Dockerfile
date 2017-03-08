@@ -2,7 +2,6 @@ FROM citrine-executor:latest
 
 RUN yum install -y bzip2 liblapack-dev make 
 
-ADD . /usr/local/ingest/compute
 WORKDIR /usr/local/ingest/compute
 
 # Install conda
@@ -18,7 +17,9 @@ RUN source activate compute
 
 RUN conda install numpy scipy pillow pytest
 
+ADD . /usr/local/ingest/compute
 RUN pip install -r requirements.txt
+RUN python ./setup.py install
 
 ENTRYPOINT ["ruby", "../wrap.rb"]
-CMD ["manifest.json"]
+CMD ["--manifest_url=manifest.json"]
