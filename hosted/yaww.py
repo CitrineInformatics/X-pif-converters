@@ -8,7 +8,12 @@ def unpack_arguments(argv_in):
     files = argv[2:]
  
     with open(param_file, "r") as f:
-        kwargs = json.load(f)
+        passed_args = json.load(f)
+
+    kwargs = {}
+    for x in passed_args['arguments']:
+        kwargs[x['name']] = x['value']
+
     kwargs['files'] = files
     return kwargs
 
