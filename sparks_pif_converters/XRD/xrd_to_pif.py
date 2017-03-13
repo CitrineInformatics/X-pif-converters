@@ -93,6 +93,12 @@ def raw_to_pif(raw_xrd_file, tags=None):
     except Exception as e:
         print(e)
 
+def convert(fname, tags=None, **kwargs):
+    pifs = raw_to_pif(fname)
+    if tags:
+        pifs.tags = tags
+    return pifs
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

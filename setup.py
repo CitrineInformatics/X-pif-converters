@@ -12,5 +12,10 @@ setup(name='sparks_pif_converters',
         'peakutils',
         'pillow',
         'pyxrd'   
-    ]
+    ],
+    entry_points={
+        'citrine.dice.converter': [
+            'sparks_xrd = sparks_pif_converters.XRD',
+        ],
+    },
 )
