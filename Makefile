@@ -1,5 +1,8 @@
 DOCKER = docker
 
+clean:
+	rm image
+
 run: image
 	docker run sparks-xrd
 
