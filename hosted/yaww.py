@@ -22,7 +22,7 @@ args = unpack_arguments(argv)
 from sparks_pif_converters.XRD import raw_to_pif
 from pypif import pif
 for fname in args['files']:
-    pifs = raw_to_pif(fname, args['tags'])
+    pifs = raw_to_pif(fname)
     with open("output.json", "w") as f:
         pif.dump(pifs, f)
 
